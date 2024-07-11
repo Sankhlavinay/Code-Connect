@@ -1,0 +1,30 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <div class="container-fluid">
+    <%= link_to 'Code-Connect', root_path, class: 'navbar-brand' %>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <% if user_signed_in? %>
+          <li class="nav-item">
+            <%= link_to 'My Profile', member_path(current_user) , class: "nav-link active" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to 'Sign Out', destroy_user_session_path, data: { turbo_method: :delete, turbo_confirm: "Are you sure to sign out?" }, class: "nav-link active" %>
+          </li>
+        <% else %>
+          <li class="nav-item">
+            <%= link_to 'Sign In', new_user_session_path, class: "nav-link active" %>
+          </li>
+        <% end %>
+      </ul>
+      <%#= search_form_for q,  url: root_path do |f| %>
+        <!-- <div class="form-group d-flex gap-1"> -->
+        <%#= f.search_field :city_or_country_cont, class: "form-control", placeholder: "Search by Country or City",  area: { label: "Search by Country or City", describedby: "button-addon2" } %>
+        <%#= f.submit "Search", class: "btn btn-outline-light", id: "button-addon2" %>
+        <!-- </div> -->
+        <%# end %>
+      </div>
+    </div>
+  </nav>

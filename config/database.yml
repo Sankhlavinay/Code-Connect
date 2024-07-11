@@ -1,0 +1,22 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  host: localhost
+  port: 5432
+  username: vinay
+  password: 123456
+
+development:
+  <<: *default
+  database: Code_Connect_development
+  
+test:
+  <<: *default
+  database: Code_Connect_test
+
+production:
+  <<: *default
+  database: Code_Connect_production
+  username: Code_Connect
+  password: <%= ENV["CODE_CONNECT_DATABASE_PASSWORD"] %>
