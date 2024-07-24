@@ -9,7 +9,7 @@
             <h3>About</h3>
           </div>
         </div>
-        <% if user_signed_in? && @user == current_user %>
+        <% if @user == current_user %>
           <div class="col-lg-6">
             <div class="d-flex justify-content-end">
               <%= link_to edit_member_description_path, class: "edit-about", data: { controller: "bs-modal-form" } do %>
@@ -20,6 +20,48 @@
         <% end %>
       </div>
       <%= render "member_description", user: @user %>
+    </div>
+  </div>
+
+  <div class="card mb-4">
+    <div class="card-body">
+      <% if @user == current_user %>
+        <div class="row">
+          <div class="col-lg-4">
+            <div class="d-flex justify-content-start">
+              <h3>Work Experiences</h3>
+            </div>
+          </div>
+
+          <div class="col-lg-4">
+            <div class="d-flex justify-content-end">
+              <%= link_to new_work_experience_path, class: "text-decoration-none  ", data: { controller: "bs-modal-form" } do %>
+                <i class="bi bi-plus"></i>
+                <span class="ms-1">Add Experience</span>
+              <% end %>
+            </div>
+          </div>
+
+          <% if @user.work_experiences.present? %>
+            <div class="col-lg-4 ">
+              <div class="d-flex justify-content-end">
+                <%= link_to "javascript:void(0)", class: "text-decoration-none" do %>
+                  <i class="bi bi-pencil-fill"></i>
+                  <span class="ms-1">Edit Experiences</span>
+                <% end %>
+              </div>
+          </div>
+          <% end %>
+        </div>
+      <% end %>
+
+      <% if @user.work_experiences.present? %>
+        <ul class="list-group" id="work_experience_items">
+          <% @user.work_experiences.each do |work_experience| %>
+            <%= render "work_experiences/work_experience", work_experience: work_experience %>
+          <% end %>
+        </ul>
+      <% end %>
     </div>
   </div>
 </div>

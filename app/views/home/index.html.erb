@@ -19,14 +19,14 @@
       <div class="col-lg-3 mb-3 mt-3">
         <div class="card text-center shadow h-100">
           <div class="card-body">
-            <%= image_tag "images.png", class: "rounded-circle border border-2 border-primary mb-3 w-50" %>
-            <div class="user-info" data-controller="user-name">
-              <h5 data-user-name-target="name" data-action="click->user-name#getUserName"><%= user.name %></h5>
-              <p class="lead"><%= user.profile_title %></p>
-              <small class="text-primary"><%= user.country %></small><br>
+              <%= image_tag "images.png", class: "rounded-circle border border-2 border-primary mb-3 w-50" %>
+              <div class="user-info" data-controller="user-name">
+                <h5 data-user-name-target="name" data-action="click->user-name#getUserName"><%= user.name %></h5>
+                <p class="lead"><%= user.profile_title %></p>
+                <small class="text-primary"><%= user.country %></small><br>
 
-              <%= link_to "View Profile", member_path(user), class: "btn btn-primary mt-3" %>
-            </div>
+                <%= link_to "View Profile", member_path(user), class: "btn btn-primary mt-3" %>
+              </div>
           </div>
         </div>
       </div>

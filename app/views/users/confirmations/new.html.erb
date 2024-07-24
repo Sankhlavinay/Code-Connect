@@ -1,0 +1,26 @@
+<div class="col-lg-6 mx-auto mt-5 mb-5">
+  <div class="card">
+    <div class="card-header">
+      <h2 class="text-center card-title">Resend confirmation instructions</h2>
+    </div>
+    <div class="card-body">
+      <%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
+        <%= render "users/shared/error_messages", resource: resource %>
+
+        <div class="form-group">
+          <%= f.label :email, class: "mt-2" %>
+          <%= f.email_field :email, class: "form-control", autofocus: true, autocomplete: "email", value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email) %>
+        </div>
+
+        <div class="actions mt-4">
+          <%= f.submit "Resend confirmation instructions", class: "btn btn-primary" %>
+        </div>
+      <% end %>
+
+      <%= render "users/shared/links" %>
+    </div>
+  </div>
+</div>
+
+
+

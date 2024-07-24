@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, controllers: {
+        registrations: 'users/registrations',
+        sessions: 'users/sessions',
+        passwords: 'users/passwords',
+        confirmations: 'users/confirmations'
+  }
+
   root 'home#index'
   
   get 'member/:id', to: 'members#show', as: "member"
@@ -9,4 +15,8 @@ Rails.application.routes.draw do
 
   get 'edit_personal_details', to: 'members#edit_personal_details', as: 'edit_member_personal_details'
   patch 'update_personal_details', to: 'members#update_personal_details', as: "update_member_personal_details"
+  get "member-connections/:id", to: "members#connections", as: "member_connections"
+
+  resources :work_experiences
+  resources :connections
 end

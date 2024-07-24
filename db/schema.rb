@@ -10,9 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_07_10_190741) do
+ActiveRecord::Schema[7.0].define(version: 2024_07_18_093459) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "connections", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.integer "connected_user_id"
+    t.string "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_connections_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -39,8 +48,32 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_10_190741) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "contact_number"
+    t.integer "connected_user_ids", default: [], array: true
+    t.string "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string "unconfirmed_email"
+    t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "work_experiences", force: :cascade do |t|
+    t.date "start_date"
+    t.date "end_date"
+    t.string "job_title"
+    t.string "employment_type"
+    t.string "location"
+    t.string "location_type"
+    t.boolean "currently_working_here"
+    t.text "description"
+    t.string "company"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_work_experiences_on_user_id"
+  end
+
+  add_foreign_key "connections", "users"
+  add_foreign_key "work_experiences", "users"
 end
