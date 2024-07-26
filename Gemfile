@@ -80,3 +80,5 @@ gem 'ransack'
 gem 'devise'
 gem 'kaminari'
 gem 'cssbundling-rails'
+
+gem "render_build_setup", "~> 0.0.1"
