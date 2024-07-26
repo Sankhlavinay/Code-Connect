@@ -17,6 +17,6 @@ test:
 
 production:
   <<: *default
-  database: Code_Connect_production
-  username: Code_Connect
-  password: <%= ENV["CODE_CONNECT_DATABASE_PASSWORD"] %>
+  database: code_connect
+  username: code_connect_user
+  password: vVeiWcRn4a2Ve8PqPg42jPRO358eTr3s
