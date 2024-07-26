@@ -1,8 +1,7 @@
 require "active_support/core_ext/integer/time"
 
 Rails.application.configure do
-  config.hosts << "code-connect-mavs.onrender.com"
-  config.action_mailer.default_url_options = { host: 'code-connect-mavs.onrender.com' }
+  
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.
