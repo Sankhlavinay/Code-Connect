@@ -10,8 +10,10 @@ services:
   runtime: ruby
   plan: free
   buildCommand: "./bin/render-build.sh"
-
   startCommand: "bundle exec rails server"
+  build:
+    - bundle exec rails assets:precompile
+    - bundle exec rails turbo:compile
   envVars:
     key: DATABASE_URL
     fromDatabase:

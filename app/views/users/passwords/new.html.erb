@@ -5,11 +5,13 @@
     </div>
     <div class="card-body">
       <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-        <%= render "users/shared/error_messages", resource: resource %>
 
         <div class="form-group">
           <%= f.label :email, class: "mt-2" %>
           <%= f.email_field :email, class: "form-control", autofocus: true, autocomplete: "email" %>
+          <% if resource.errors[:email].present? %>
+              <p class="text-danger"><%= resource.errors[:email].first %></p>
+          <% end %>
         </div>
 
         <div class="actions mt-4">
