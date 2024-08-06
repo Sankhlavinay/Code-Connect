@@ -55,6 +55,7 @@ group :development, :test do
   gem "factory_bot_rails"
   gem "rspec-rails", '~> 6.0.0'
   gem 'webdrivers'
+  gem 'letter_opener_web', '~> 3.0'
 end
 
 group :development do
@@ -80,5 +81,7 @@ gem 'ransack'
 gem 'devise'
 gem 'kaminari'
 gem 'cssbundling-rails'
+gem 'dotenv'
 
 gem "render_build_setup", "~> 0.0.1"
+gem "sendinblue"

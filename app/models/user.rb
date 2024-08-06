@@ -1,10 +1,11 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
-  #  :lockable, :timeoutable and :omniauthable, :confirmable,
+  #  :lockable, :timeoutable and :omniauthable, 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
-         :trackable, 
+         :trackable, :confirmable,
          authentication_keys: [:login]
+
 
   has_many :work_experiences, dependent: :destroy  
   has_many :connections, dependent: :destroy  
@@ -65,4 +66,5 @@ class User < ApplicationRecord
   def mutually_connected_ids(user)
     self.connected_user_ids.intersection(user.connected_user_ids)
   end
+
 end

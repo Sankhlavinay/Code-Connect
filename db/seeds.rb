@@ -20,3 +20,15 @@ ActiveRecord::Base.transaction do
     puts "User #{i+1} created Successfully."
   end
 end
+
+
+class UserMailer < ApplicationMailer
+  default from: 'vinaysankhla4233@gmail.com' # this domain must be verified with Resend
+  def welcome_email(user)
+    @user = user
+    mail(
+      to: @user.email,
+      subject: "Hello from Rails and testng mail",
+    )
+  end
+end
