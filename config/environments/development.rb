@@ -76,10 +76,10 @@ Rails.application.configure do
   config.action_mailer.perform_deliveries = true
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    :address => "smtp-relay.brevo.com",
-    :port => "587",
-    :user_name => "797e5e001@smtp-brevo.com",
-    :password => "nd1fsZXRSTp32m8Y",
+    :address => ENV["send_in_blue_address"],
+    :port => ENV["send_in_blue_port"],
+    :user_name => ENV["send_in_blue_username"],
+    :password => ENV["send_in_blue_password"],
     :authentication => "plain",
     :enable_starttls_auto => true
     }
